@@ -1,0 +1,5 @@
+edu\eci\arem\tweet\entities\User.class
+edu\eci\arem\tweet\service\TwitterService.class
+edu\eci\arem\tweet\entities\Post.class
+edu\eci\arem\tweet\Tweet.class
+edu\eci\arem\tweet\entities\Thread.class
