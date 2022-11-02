@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form>
+        <label for="userName"> Nombre de Usuario: </label>
+        <input type="text" class="form-control" placeholder="New Message" maxlength="140" style="width: 500px;
+             border-style: outset;
+             border-radius: 8px;
+             padding: 5px;
+             height: 35px;
+             width: 40%;
+             text-align: center;
+             position: sticky;">
+        <label for="password"> Contraseña: </label>
+        <input type="text" class="form-control" placeholder="New Message" maxlength="140" style="width: 500px;
+             border-style: outset;
+             border-radius: 8px;
+             padding: 5px;
+             height: 35px;
+             width: 40%;
+             text-align: center;
+             position: sticky;">
+        <input type="button" id="text-tweet" value="Submit" onclick="app.save()" style="background-color: #73A7FD;
+               border-style: solid;
+               border-radius: 8px;
+               font-family: 'Georgia', serif;
+               height: 29px;
+               position: sticky;">
+    </form>
+
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</html>
