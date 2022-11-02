@@ -19,19 +19,32 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import static com.mongodb.client.model.Sorts.*;
+import java.util.HashMap;
 
 public class DBConnection {
-    
+
     private static MongoCollection<Document> messages;
     private static FindIterable<Document> iterable;
     public static MongoClient mongoClient;
-    
+
     public static void main(String[] args) {
+        HashMap<String, String> data = new HashMap<>();
+        HashMap<String, String> data1 = new HashMap<>();
+        HashMap<String, HashMap> threa_d = new HashMap<>();
+        data.put("User", "User");
+        data.put("Message", "Se supone que esto es una prueba");
+        data1.put("User", "Usuario");
+        data1.put("Message", "Se supone que esto es una prueba para users");
+        threa_d.put("1", data);
+        threa_d.put("2", data);
         connect();
-        insertIntoDB("Prueba BD1");
+        insertIntoDB(data, "test");
+        insertIntoDB(data1, "test");
+        insertIntoDB(threa_d, "test");
+
     }
-    
-    public static void connect() {
+
+    public static MongoClient connect() {
         // Conexión a base de datos mongodb
 
         //URL para Atlasdb en la nube
@@ -39,7 +52,6 @@ public class DBConnection {
 
         //URL para conexión local
         //String connstr ="mongodb://localhost:40000/?retryWrites=true&w=majority";
-
         //Crea objeto de tipo ConnectionString
         ConnectionString connectionString = new ConnectionString(connstr);
 
@@ -51,27 +63,27 @@ public class DBConnection {
                         .build())
                 .build();
 
+        mongoClient = MongoClients.create(settings);
         //Crea una instancia del cliente mongo conectado a la base de datos
-        mongoClient = MongoClients.create(settings);    
         MongoDatabase db = mongoClient.getDatabase("Messages");
-        messages = db.getCollection("cadenas");
-        
-
+        return MongoClients.create(settings);
+//        messages = db.getCollection("cadenas");
     }
 
     /**
      * Funcion encargada de ingresar el valor de la cadena a la base de datos
-     * retorna un JSON con los ultimos 10 valores de 
+     * retorna un JSON con los ultimos 10 valores de
+     *
      * @param valueChain
      * @return
      */
-    public static String insertIntoDB(String valueChain) {
+    public static String insertIntoDB(HashMap data, String collection) {
         MongoDatabase database = mongoClient.getDatabase("AREP-DOCKER-TALLER1");
-        MongoCollection<Document> chains = database.getCollection("cadenas");
+        MongoCollection<Document> chains = database.getCollection(collection);
 
         //Crea un documento BSON con el cliente
         Document chain = new Document("_id", new ObjectId());
-        chain.append("Value", valueChain);
+        data.forEach((k, v) -> chain.append((String) k, v));
         chain.append("createdAt", LocalDateTime.now());
 
         //Agrega el nuevo cliente a la colección
@@ -82,15 +94,17 @@ public class DBConnection {
         Bson orderBySort = orderBy(descending("createdAt"));
 
         //Creacion de JSON
-        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(printChains(chains));
     }
 
     /**
-     * Funcion generada para imprimir los ultimos 10 registros de la coleccion cadenas
+     * Funcion generada para imprimir los ultimos 10 registros de la coleccion
+     * cadenas
+     *
      * @param chains
      */
-    public static ArrayList<Document> printChains(MongoCollection<Document> chains){
+    public static ArrayList<Document> printChains(MongoCollection<Document> chains) {
         ArrayList<Document> jsonObjects = new ArrayList<>();
         FindIterable<Document> iterable = chains.find();
         for (Document d : iterable) {

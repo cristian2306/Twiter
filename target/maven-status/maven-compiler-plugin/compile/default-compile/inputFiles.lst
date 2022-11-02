@@ -1,10 +1,6 @@
-<<<<<<< HEAD
+C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\tweet\entities\Post.java
 C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\conection\DBConnection.java
+C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\tweet\entities\User.java
+C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\tweet\service\TwitterService.java
 C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\tweet\Tweet.java
-=======
-C:\Users\diego.gonzalez-g\Desktop\Twiter\src\main\java\edu\eci\arem\tweet\service\TwitterService.java
-C:\Users\diego.gonzalez-g\Desktop\Twiter\src\main\java\edu\eci\arem\tweet\entities\Thread.java
-C:\Users\diego.gonzalez-g\Desktop\Twiter\src\main\java\edu\eci\arem\tweet\Tweet.java
-C:\Users\diego.gonzalez-g\Desktop\Twiter\src\main\java\edu\eci\arem\tweet\entities\Post.java
-C:\Users\diego.gonzalez-g\Desktop\Twiter\src\main\java\edu\eci\arem\tweet\entities\User.java
->>>>>>> 18241f643a5742d6bbe7af01f5ebb7a415a60fde
+C:\Users\cristian.castellanos\Documents\NetBeansProjects\tweet\src\main\java\edu\eci\arem\tweet\entities\Thread.java
